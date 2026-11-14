@@ -34,7 +34,11 @@ Analyze historical credit-card transactions to understand fraud prevalence, spen
 
 ## Dashboard
 
-**Screenshot:** Add a refreshed, privacy-reviewed image at `powerbi/dashboard.png` and replace this note with `![Credit Card Fraud Dashboard](powerbi/dashboard.png)` once the image is available.
+<img width="1736" height="732" alt="Screenshot 2026-11-14 181910" src="https://github.com/user-attachments/assets/e80b88cd-10ba-49a3-8431-782f65e00f1e" />
+
+<img width="1772" height="728" alt="Screenshot 2026-11-14 182056" src="https://github.com/user-attachments/assets/dd59be57-ba2e-4653-80d2-d67e58421d66" />
+
+<img width="1712" height="650" alt="Screenshot 2026-11-14 182316" src="https://github.com/user-attachments/assets/7e0ecded-cbef-47fa-9037-724ff77868ea" />
 
 The dashboard includes six KPI cards: total transactions, fraudulent transactions, fraud rate, total transaction value, fraudulent transaction amount, and fraudulent amount percentage. The last two quantify the financial share associated with fraud-labeled transactions. The fraud amount percentage should use an all-status denominator so it remains interpretable when the Fraud Status slicer changes.
 
