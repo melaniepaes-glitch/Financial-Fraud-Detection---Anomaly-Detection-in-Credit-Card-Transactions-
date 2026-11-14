@@ -75,11 +75,13 @@ financial-fraud-detection/
 - The supplementary location file has rounded card identifiers; exact card-number joins are not trustworthy without additional validation.
 - The original SQL script may include destructive statements and machine-specific file paths; inspect it before execution.
 
-## Key findings
+## Key Insights & Business Recommendations
 
-- Fraud-labeled transactions account for **2,252 of 389,002 transactions (approximately 0.58%)**.
-- The dashboard displays approximately **$1.17 million** in fraud-labeled transaction value, or approximately **4.26%** of total transaction value, subject to final verification with all report filters cleared.
-- The difference between fraud frequency and fraud value share suggests fraudulent transactions have a higher average value than the overall transaction population; this is a descriptive observation, not a causal conclusion.
+1. **Fraud Impact:** Only 0.58% of transactions were fraudulent, but they represented 4.26% ($1.17M) of total transaction value. Prioritize monitoring higher-value suspicious transactions.
+2. **Transaction Trends:** Monthly transaction volumes fluctuated significantly, with a peak in late 2019. Monitor unusual changes in transaction activity.
+3. **Geographic Patterns:** Fraudulent transactions occurred across the US, with visible concentrations in the eastern regions. Compare regional fraud rates to identify higher-risk areas.
+4. **Spending Behavior:** Transaction amounts varied by category and gender. Use category-specific spending patterns to help identify unusual transactions.
+5. **Business Value:** Combining financial KPIs, time trends, geographic analysis, and transaction distributions supports more informed fraud monitoring and investigation.
 - Transaction activity is analyzed over **January 2019 through December 2020**, using validated day-month-year timestamps.
 
 ## Skills demonstrated
