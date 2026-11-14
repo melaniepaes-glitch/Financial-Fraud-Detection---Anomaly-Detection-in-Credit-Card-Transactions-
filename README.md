@@ -17,8 +17,6 @@ Analyze historical credit-card transactions to understand fraud prevalence, spen
 | Transaction date range | 2019-01-01 through 2020-06-21 |
 | December 2019 transactions | 42,308 |
 
-**Date parsing warning:** The provided `cc_data.csv` uses **`DD-MM-YYYY HH:mm`** text timestamps (e.g., `23-03-2019 03:06`) even though the transactions are US-based. Parse with `pd.to_datetime(..., format="%d-%m-%Y %H:%M")` or the matching locale in Power Query. The Power BI date parsing was corrected and validated against the original CSV. The latest original transaction is **21 June 2020, 12:13**. The monthly trend uses the required Power BI **Date Hierarchy** (Year and Month).
-
 ## Business questions
 
 - How prevalent are fraud-labeled transactions, and how do they vary by transaction category and gender?
