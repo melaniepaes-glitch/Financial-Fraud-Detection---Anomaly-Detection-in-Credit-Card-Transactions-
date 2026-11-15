@@ -14,7 +14,7 @@ Analyze historical credit-card transactions to understand fraud prevalence, spen
 | Fraud-labeled transactions | 2,252 |
 | Fraud rate | 0.58% |
 | Transaction amount total | $27,402,136.52 |
-| Transaction date range | 2019-01-01 through 2020-06-12 |
+| Transaction date range | 2019-01-01 through 2020-12-06 |
 | December 2019 transactions | 42,308 |
 
 ## Business questions
