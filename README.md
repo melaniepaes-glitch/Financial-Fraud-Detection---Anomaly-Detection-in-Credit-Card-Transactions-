@@ -49,26 +49,93 @@ The MAQ box-and-whisker visual uses `trans_num` in **Axis**, `category` in **Axi
 
 The weekly `Inflation_Adj_Amt` formula applies an **assumed fixed 2% annual rate** using `YEAR(TODAY())`. It is **not** a CPI-based adjustment, and its output changes when the model refreshes in a new year. `WeekNum` combines corresponding week numbers across years as required by the project brief.
 
+
 ## Files
 
-```
+```text
 Financial-Fraud-Detection/
 ├── README.md
 ├── Credit_Card_Fraud_EDA.ipynb
-└── Financial_Fraud_Detection.sql
+├── Financial_Fraud_Detection.sql
+└── requirements.txt
 ```
 
 - **README.md** – Project overview, methodology, dashboard screenshots, key findings, and limitations.
-- **Credit_Card_Fraud_EDA.ipynb** – Python exploratory data analysis notebook.
-- **Financial_Fraud_Detection.sql** – MySQL queries for transaction analysis and fraud exploration.
+- **Credit_Card_Fraud_EDA.ipynb** – Python exploratory data analysis, visualizations, and business recommendations.
+- **Financial_Fraud_Detection.sql** – MySQL 8.0 script for importing, validating, and analyzing transaction data.
+- **requirements.txt** – Python dependencies needed to run the notebook, including Pandas, NumPy, Matplotlib, Seaborn, and Jupyter.
+
+
 
 ## Reproduce
 
-1. Install dependencies: `pip install -r requirements.txt`.
-2. Obtain the dataset from an authorized source and store it **locally**, not in this repository.
-3. Open the notebook and update the dataset path as necessary.
-4. Run the SQL queries against a clean MySQL import. Verify **389,002** rows and distinct transaction IDs before analyzing.
-5. Open the private Power BI `.pbix` locally, update source paths, refresh, confirm the corrected date range and six KPIs, then export a privacy-reviewed screenshot.
+### 1. Install Python dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Prepare the dataset
+
+Obtain the dataset from an authorized source and store these files locally:
+
+- `cc_data.csv`
+- `location_data.csv`
+- `cc_data_dec19.csv`
+
+Do not upload the raw CSV files to this public repository because they contain sensitive information.
+
+### 3. Run the Python notebook
+
+Open `Credit_Card_Fraud_EDA.ipynb` in Jupyter Notebook or VS Code.
+
+Update the CSV path in the notebook if necessary, then restart the kernel and run all cells.
+
+### 4. Configure MySQL
+
+Use MySQL 8.0.
+
+Open `Financial_Fraud_Detection.sql` and update all three `LOAD DATA INFILE` paths to match the location of your CSV files.
+
+The example paths in the SQL script refer to a Windows MySQL server upload directory.
+
+Check the permitted import directory using:
+
+```sql
+SHOW VARIABLES LIKE 'secure_file_priv';
+```
+
+Ensure that the MySQL server has permission to read the files.
+
+### 5. Import and validate the data
+
+Execute `Financial_Fraud_Detection.sql`.
+
+The script:
+- Creates the `finance` database if it does not exist.
+- Creates the required transaction and location tables if they do not exist.
+- Uses transaction IDs to prevent duplicate transaction imports.
+- Imports the December 2019 supplementary data into a separate table.
+- Uses `SHOW WARNINGS;` after each CSV import.
+- Runs validation and descriptive analysis queries.
+
+Expected validation results:
+- Main transactions: 389,002
+- Unique transaction IDs: 389,002
+- Fraud-labeled transactions: 2,252
+- Unique location coordinate pairs: 966
+- December 2019 transactions: 42,308
+
+Investigate import warnings or unexpected counts before relying on the analysis.
+
+### 6. Review the Power BI dashboard
+
+Open the private Power BI `.pbix` file locally.
+
+Update data-source paths, refresh the model, and verify the six KPI cards, date range, and dashboard filters.
+
+Only publish screenshots after reviewing them for sensitive information.
+
 
 ## Limitations and ethics
 
