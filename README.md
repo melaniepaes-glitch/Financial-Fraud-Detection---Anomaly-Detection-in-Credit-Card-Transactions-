@@ -51,6 +51,7 @@ The weekly `Inflation_Adj_Amt` formula applies an **assumed fixed 2% annual rate
 
 ## Files
 
+```
 Financial-Fraud-Detection/
 ├── README.md
 ├── Credit_Card_Fraud_EDA.ipynb
