@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS location_data (
     lat DECIMAL(10,6) NOT NULL,
     `long` DECIMAL(10,6) NOT NULL,
     UNIQUE KEY uq_location_coordinates (lat, `long`)
-); SHOW WARNINGS;
+); 
 
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/location_data.csv'
 IGNORE INTO TABLE location_data
