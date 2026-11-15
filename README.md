@@ -143,7 +143,8 @@ Only publish screenshots after reviewing them for sensitive information.
 - Fraud labels are rare (about 0.58%), and observational patterns do not prove causation.
 - The source includes sensitive card numbers, names, addresses, and birth dates. **Do not publish raw CSV files, an unreviewed `.pbix`, or the private Excel workbook.**
 - The supplementary location file has rounded card identifiers; exact card-number joins are not trustworthy without additional validation.
-- The original SQL script may include destructive statements and machine-specific file paths; inspect it before execution.
+- The SQL script uses environment-specific CSV paths. Update these paths, check MySQL import permissions, and review the script before execution.
+
 
 ## Key Insights & Business Recommendations
 
