@@ -55,16 +55,17 @@ The weekly `Inflation_Adj_Amt` formula applies an **assumed fixed 2% annual rate
 ```text
 Financial-Fraud-Detection/
 ├── README.md
+├── Financial_Fraud_Analysis.xlsx
 ├── Credit_Card_Fraud_EDA.ipynb
 ├── Financial_Fraud_Detection.sql
 └── requirements.txt
 ```
 
 - **README.md** – Project overview, methodology, dashboard screenshots, key findings, and limitations.
+- **Financial_Fraud_Analysis.xlsx** – Privacy-reviewed Excel analysis featuring statistical summaries, transaction distributions, fraud analysis by gender and category, geographic transaction rankings, correlation analysis, and job-role spending patterns.
 - **Credit_Card_Fraud_EDA.ipynb** – Python exploratory data analysis, visualizations, and business recommendations.
 - **Financial_Fraud_Detection.sql** – MySQL 8.0 script for importing, validating, and analyzing transaction data.
 - **requirements.txt** – Python dependencies needed to run the notebook, including Pandas, NumPy, Matplotlib, Seaborn, and Jupyter.
-
 
 
 ## Reproduce
