@@ -3,7 +3,6 @@ CREATE DATABASE IF NOT EXISTS finance;
 USE finance;
 
 -- Drop & recreate tables
-DROP TABLE IF EXISTS cc_data;
 CREATE TABLE cc_data (
   idx BIGINT NULL,
   trans_date_trans_time DATETIME NULL,
@@ -34,8 +33,6 @@ CREATE TABLE cc_data (
   INDEX idx_is_fraud (is_fraud),
   INDEX idx_trans_dt (trans_date_trans_time)
 );
-
-DROP TABLE IF EXISTS location_data;
 
 CREATE TABLE location_data (
   location_id BIGINT AUTO_INCREMENT PRIMARY KEY,
