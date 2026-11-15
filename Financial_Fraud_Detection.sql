@@ -7,6 +7,35 @@
 -- Change paths to where your MySQL SERVER can read the CSV files.
 -- LOAD DATA INFILE requires FILE privilege and permitted secure_file_priv path.
 -- For local client files use LOAD DATA LOCAL INFILE with a configured client.
+-- ============================================================
+-- CSV FILE PATH CONFIGURATION
+-- ============================================================
+-- Before running this script:
+--
+-- 1. Download the authorized source dataset locally.
+-- 2. Locate the following three CSV files:
+--      cc_data.csv
+--      location_data.csv
+--      cc_data_dec19.csv
+--
+-- 3. Update the file paths in all three LOAD DATA INFILE
+--    statements to match your local MySQL setup.
+--
+-- Example Windows MySQL server upload directory:
+-- C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/
+--
+-- LOAD DATA INFILE reads files from the MySQL server's
+-- filesystem, not necessarily your personal computer.
+--
+-- Check the permitted import directory using:
+-- SHOW VARIABLES LIKE 'secure_file_priv';
+--
+-- If importing client-side files, use LOAD DATA LOCAL INFILE
+-- only when it is appropriately enabled and permitted.
+--
+-- Do not upload the source CSV files to this public repository.
+-- ============================================================
+
 
 CREATE DATABASE IF NOT EXISTS finance;
 USE finance;
@@ -57,7 +86,7 @@ IGNORE 1 LINES
  gender, street, city, state, zip, lat, `long`, city_pop, job,
  @dob, trans_num, unix_time, merch_lat, merch_long, is_fraud)
 SET trans_date_trans_time = STR_TO_DATE(@trans_dt, '%d-%m-%Y %H:%i'),
-    dob = STR_TO_DATE(@dob, '%d-%m-%Y');
+    dob = STR_TO_DATE(@dob, '%d-%m-%Y'); SHOW WARNINGS;
 
 -- 2) Location reference table.
 -- location_data.csv cc_num values are rounded scientific notation; they
@@ -71,14 +100,14 @@ CREATE TABLE IF NOT EXISTS location_data_portfolio (
     lat DECIMAL(10,6) NOT NULL,
     `long` DECIMAL(10,6) NOT NULL,
     UNIQUE KEY uq_location_coordinates (lat, `long`)
-);
+); SHOW WARNINGS;
 
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/location_data.csv'
 IGNORE INTO TABLE location_data_portfolio
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
 IGNORE 1 LINES
-(cc_num_rounded, lat, `long`);
+(cc_num_rounded, lat, `long`); SHOW WARNINGS;
 
 -- 3) December 2019 subset: separate table, NOT appended to main table.
 -- This file has 20 columns and lacks unix_time, merch_lat, merch_long.
